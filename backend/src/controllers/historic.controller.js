@@ -1,24 +1,20 @@
 const historicCtrl = {};
 const axios = require("axios");
+const Commit = require("../logic/commit")
+
+const comm = new Commit();
 
 historicCtrl.getCommits = (req, res) => {
     const url = "https://api.github.com/repos/dijad/fulltimeforce-test/events"
     axios.get(url)
         .then(function (response) {
-            const data = response.data;
-            const commits = [];
-            data.forEach(function (element) {
-                commits.push(element.payload.commits)
-            });
-            res.status(200).json({ messazge: 'hola' })
+            const commits = comm.getCommits(response.data);
+            res.status(200).json(commits)
         })
         .catch(function (error) {
             // handle error
             console.log(error);
         })
-        .then(function () {
-            // always executed
-        });
 }
 
 module.exports = historicCtrl
