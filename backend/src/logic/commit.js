@@ -7,13 +7,13 @@ class Commit {
         data.forEach(function (element) {
             commits.push(element.payload.commits)
         });
-        for (let i = 0; i < commits.length; i++) {
-            if (commits[i] != null && commits[i] != undefined) {
-                for (let j = 0; j < commits[i].length; j++) {
-                    myCommits.push(commits[i][j])
+        commits.forEach(function (element) {
+            if (element != null && element != undefined) {
+                for (let j = 0; j < element.length; j++) {
+                    myCommits.push(element[j])
                 }
             }
-        }
+        })
         return myCommits
     }
 }
