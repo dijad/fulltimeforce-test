@@ -4,12 +4,9 @@ import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 
 class ControllerCommit extends GetxController {
-  List<Commit> myCommits = [];
+  List<Commit> _myCommits = [];
 
-  List<Commit> getCommits() {
-    parseCommits();
-    return myCommits;
-  }
+  List<Commit> get myCommits => _myCommits;
 
   parseCommits() async {
     var url = Uri.parse('http://192.168.0.9:4000/commits');
@@ -20,6 +17,7 @@ class ControllerCommit extends GetxController {
           (dynamic item) => Commit.fromJson(item),
         )
         .toList();
-    myCommits = commits;
+    _myCommits = commits;
+    update();
   }
 }

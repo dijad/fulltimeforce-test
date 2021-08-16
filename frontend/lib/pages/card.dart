@@ -13,6 +13,7 @@ class CommitCard extends StatelessWidget {
       borderRadius: 30,
       color: Colors.white,
       width: MediaQuery.of(context).size.width / 3.2,
+      topCardHeight: MediaQuery.of(context).size.height / 2.8,
       topCardWidget: topCard(),
       bottomCardWidget: bootomCard(),
     );
@@ -28,7 +29,7 @@ class CommitCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Text('Sha: ',
                     style: TextStyle(
@@ -49,10 +50,10 @@ class CommitCard extends StatelessWidget {
                 Text('Distinct: ',
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold)),
                 Text(commit.distinct,
-                    style: TextStyle(color: Colors.black, fontSize: 25))
+                    style: TextStyle(color: Colors.black, fontSize: 18))
               ],
             ),
           ),
@@ -65,13 +66,15 @@ class CommitCard extends StatelessWidget {
                 Text('Email: ',
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold)),
-                Text(commit.email,
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold))
+                Flexible(
+                  child: Text(commit.email,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold)),
+                )
               ],
             ),
           ),
@@ -80,15 +83,15 @@ class CommitCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text('Name:   ',
+                Text('Name: ',
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold)),
                 Text(commit.name,
                     style: TextStyle(
                         color: Colors.black87,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold))
               ],
             ),
@@ -99,13 +102,15 @@ class CommitCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text('Url: ',
+                Text('Url:  ',
                     style: TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
                         fontWeight: FontWeight.bold)),
-                Text(commit.url,
-                    style: TextStyle(color: Colors.black, fontSize: 18))
+                Flexible(
+                  child: Text(commit.url,
+                      style: TextStyle(color: Colors.black, fontSize: 18)),
+                )
               ],
             ),
           ),
@@ -125,7 +130,9 @@ class CommitCard extends StatelessWidget {
                 fontSize: 25,
                 fontWeight: FontWeight.bold)),
         SizedBox(height: 10),
-        Text(commit.message, style: TextStyle(color: Colors.black)),
+        Flexible(
+            child: Text('"${commit.message}"',
+                style: TextStyle(color: Colors.black))),
       ],
     ));
   }

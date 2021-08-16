@@ -7,6 +7,7 @@ class CommitsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ControllerCommit _ctrlCommits = ControllerCommit();
+    _ctrlCommits.parseCommits();
     return GetBuilder(
         init: _ctrlCommits,
         builder: (_) => Scaffold(
@@ -15,20 +16,14 @@ class CommitsPage extends StatelessWidget {
                 color: Colors.grey[300],
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height,
-                child: RaisedButton(
-                  child: Text('Hola'),
-                  onPressed: () {
-                    _ctrlCommits.parseCommits();
-                  },
-                ) /*GridView.count(
+                child: GridView.count(
                   crossAxisCount: 3,
                   padding: EdgeInsets.all(20),
                   crossAxisSpacing: 0, // entre columnas
                   mainAxisSpacing: 0, //entre filas
-                  children: <Widget>[
-                    //cards
-                  ],
-                )*/
-                )));
+                  children: _ctrlCommits.myCommits
+                      .map((item) => CommitCard(item))
+                      .toList(),
+                ))));
   }
 }
