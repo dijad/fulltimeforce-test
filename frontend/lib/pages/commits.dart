@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/logic/Controller.commits.dart';
 import 'package:frontend/pages/card.dart';
 import 'package:get/state_manager.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:appbar_textfield/appbar_textfield.dart';
 
 class CommitsPage extends StatelessWidget {
   @override
@@ -11,7 +13,10 @@ class CommitsPage extends StatelessWidget {
     return GetBuilder(
         init: _ctrlCommits,
         builder: (_) => Scaffold(
-            appBar: AppBar(backgroundColor: Colors.purpleAccent[700]),
+            appBar: AppBarTextField(
+              backgroundColor: Colors.purpleAccent[700],
+              title: Text("Ingresar IP del servidor"),
+            ),
             body: Container(
                 color: Colors.grey[300],
                 width: double.infinity,
