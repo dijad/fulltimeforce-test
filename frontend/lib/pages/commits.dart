@@ -7,7 +7,7 @@ class CommitsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ControllerCommit _ctrlCommits = ControllerCommit();
-    _ctrlCommits.parseCommits();
+    final _ctrlText = TextEditingController();
     return GetBuilder(
         init: _ctrlCommits,
         builder: (_) => Scaffold(
@@ -32,28 +32,32 @@ class CommitsPage extends StatelessWidget {
                         child: Container(
                           width: 130,
                           child: TextField(
+                              controller: _ctrlText,
                               decoration: InputDecoration(
-                            labelText: 'IP',
-                            contentPadding: EdgeInsets.symmetric(vertical: 15),
-                            hintStyle:
-                                TextStyle(fontSize: 20.0, color: Colors.purple),
-                            labelStyle:
-                                TextStyle(fontSize: 20.0, color: Colors.purple),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.purpleAccent),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.purple),
-                            ),
-                          )),
+                                labelText: 'IP',
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 15),
+                                hintStyle: TextStyle(
+                                    fontSize: 20.0, color: Colors.purple),
+                                labelStyle: TextStyle(
+                                    fontSize: 20.0, color: Colors.purple),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.purpleAccent),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.purple),
+                                ),
+                              )),
                         ),
                       ),
                       SizedBox(height: 30),
                       Flexible(
                           child: MaterialButton(
                         color: Colors.purpleAccent[700],
-                        onPressed: () {},
+                        onPressed: () {
+                          _ctrlCommits.parseCommits(_ctrlText.text);
+                        },
                         child: Text(
                           'Aceptar',
                           style: TextStyle(color: Colors.white),
@@ -70,7 +74,7 @@ class CommitsPage extends StatelessWidget {
                             child: GridView.count(
                               crossAxisCount: 3,
                               padding: EdgeInsets.all(20),
-                              crossAxisSpacing: 0, // entre columnas
+                              crossAxisSpacing: 10, // entre columnas
                               mainAxisSpacing: 0, //entre filas
                               children: _ctrlCommits.myCommits
                                   .map((item) => CommitCard(item))

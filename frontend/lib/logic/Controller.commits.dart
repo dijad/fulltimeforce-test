@@ -8,8 +8,8 @@ class ControllerCommit extends GetxController {
 
   List<Commit> get myCommits => _myCommits;
 
-  parseCommits() async {
-    var url = Uri.parse('http://192.168.0.9:4000/commits');
+  parseCommits(ip) async {
+    var url = Uri.parse('http://$ip:4000/commits');
     var response = await http.get(url);
     List<dynamic> list = json.decode(response.body);
     List<Commit> commits = list
