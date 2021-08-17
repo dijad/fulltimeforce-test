@@ -14,7 +14,7 @@ class CommitsPage extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.purpleAccent[700],
               title: Text(
-                  "Commits para la pruebad e FULLTIMEFORCE - desarrollador backend"),
+                  "Commits para la prueba de FULLTIMEFORCE - desarrollador backend"),
             ),
             body: Container(
               color: Colors.grey[200],
