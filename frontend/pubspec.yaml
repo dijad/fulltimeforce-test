@@ -30,6 +30,8 @@ dependencies:
   get:
   slimy_card: ^1.0.4
   http: ^0.13.3
+  flutter_linkify: ^5.0.2
+  url_launcher: ^6.0.9
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/logic/Commit.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:slimy_card/slimy_card.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CommitCard extends StatelessWidget {
   final Commit commit;
@@ -109,9 +111,16 @@ class CommitCard extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold)),
                   Flexible(
-                    child: Text(commit.url,
-                        style: TextStyle(color: Colors.black, fontSize: 18)),
-                  )
+                      child: Linkify(
+                    onOpen: (_) async {
+                      if (await canLaunch(commit.url)) {
+                        await launch(commit.url);
+                      } else {
+                        throw 'No se pudo abrir el enlace ${commit.url}';
+                      }
+                    },
+                    text: commit.url,
+                  ))
                 ],
               ),
             ),
