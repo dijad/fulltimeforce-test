@@ -9,23 +9,20 @@ class CommitCard extends StatelessWidget {
   const CommitCard(this.commit);
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: SlimyCard(
-        borderRadius: 30,
-        color: Colors.white,
-        width: MediaQuery.of(context).size.width / 3.2,
-        topCardHeight: MediaQuery.of(context).size.height / 2.8,
-        bottomCardHeight: 100,
-        topCardWidget: topCard(),
-        bottomCardWidget: bootomCard(),
-      ),
+    return SlimyCard(
+      borderRadius: 30,
+      color: Colors.white,
+      width: MediaQuery.of(context).size.width / 3.2,
+      topCardHeight: MediaQuery.of(context).size.height / 2.8,
+      bottomCardHeight: 140,
+      topCardWidget: topCard(),
+      bottomCardWidget: bootomCard(),
     );
   }
 
   Widget topCard() {
-    return Flexible(
-      child: Container(
-          child: Padding(
+    return Container(
+      child: Padding(
         padding: EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,14 +117,13 @@ class CommitCard extends StatelessWidget {
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 
   Widget bootomCard() {
-    return Flexible(
-      child: Container(
-          child: Column(
+    return Container(
+      child: Column(
         children: [
           SizedBox(height: 10),
           Text('Message',
@@ -140,7 +136,7 @@ class CommitCard extends StatelessWidget {
               child: Text('"${commit.message}"',
                   style: TextStyle(color: Colors.black))),
         ],
-      )),
+      ),
     );
   }
 }
