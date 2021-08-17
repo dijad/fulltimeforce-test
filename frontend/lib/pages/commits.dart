@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frontend/logic/Controller.commits.dart';
 import 'package:frontend/pages/card.dart';
 import 'package:get/state_manager.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:appbar_textfield/appbar_textfield.dart';
 
 class CommitsPage extends StatelessWidget {
   @override
@@ -13,22 +11,78 @@ class CommitsPage extends StatelessWidget {
     return GetBuilder(
         init: _ctrlCommits,
         builder: (_) => Scaffold(
-            appBar: AppBarTextField(
+            appBar: AppBar(
               backgroundColor: Colors.purpleAccent[700],
-              title: Text("Ingresar IP del servidor"),
+              title: Text(
+                  "Commits para la pruebad e FULLTIMEFORCE - desarrollador backend"),
             ),
             body: Container(
-                color: Colors.grey[300],
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height,
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  padding: EdgeInsets.all(20),
-                  crossAxisSpacing: 0, // entre columnas
-                  mainAxisSpacing: 0, //entre filas
-                  children: _ctrlCommits.myCommits
-                      .map((item) => CommitCard(item))
-                      .toList(),
-                ))));
+              color: Colors.grey[200],
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 2,
+              child: Row(
+                children: [
+                  SizedBox(width: 5),
+                  Column(
+                    children: [
+                      SizedBox(height: 20),
+                      Flexible(child: Text('Ingrese la IP del servidor')),
+                      SizedBox(height: 5),
+                      Flexible(
+                        child: Container(
+                          width: 130,
+                          child: TextField(
+                              decoration: InputDecoration(
+                            labelText: 'IP',
+                            contentPadding: EdgeInsets.symmetric(vertical: 15),
+                            hintStyle:
+                                TextStyle(fontSize: 20.0, color: Colors.purple),
+                            labelStyle:
+                                TextStyle(fontSize: 20.0, color: Colors.purple),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.purpleAccent),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.purple),
+                            ),
+                          )),
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      Flexible(
+                          child: MaterialButton(
+                        color: Colors.purpleAccent[700],
+                        onPressed: () {},
+                        child: Text(
+                          'Aceptar',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ))
+                    ],
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: [
+                        Flexible(
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            child: GridView.count(
+                              crossAxisCount: 3,
+                              padding: EdgeInsets.all(20),
+                              crossAxisSpacing: 0, // entre columnas
+                              mainAxisSpacing: 0, //entre filas
+                              children: _ctrlCommits.myCommits
+                                  .map((item) => CommitCard(item))
+                                  .toList(),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )));
   }
 }

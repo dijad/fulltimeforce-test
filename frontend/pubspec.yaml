@@ -30,7 +30,6 @@ dependencies:
   get:
   slimy_card: ^1.0.4
   http: ^0.13.3
-  appbar_textfield: ^1.0.1+1
 
 dev_dependencies:
   flutter_test:
