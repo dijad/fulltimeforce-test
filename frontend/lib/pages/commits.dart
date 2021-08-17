@@ -76,9 +76,14 @@ class CommitsPage extends StatelessWidget {
                               padding: EdgeInsets.all(20),
                               crossAxisSpacing: 10, // entre columnas
                               mainAxisSpacing: 0, //entre filas
-                              children: _ctrlCommits.myCommits
-                                  .map((item) => CommitCard(item))
-                                  .toList(),
+                              children: _ctrlCommits.code == 200
+                                  ? _ctrlCommits.myCommits
+                                      .map((item) => CommitCard(item))
+                                      .toList()
+                                  : [
+                                      Text(
+                                          'NOTA \nRecuerde que puede hacer 60 consultas por hora. \nAsegurese de colocar una dirección IP válida')
+                                    ],
                             ),
                           ),
                         ),

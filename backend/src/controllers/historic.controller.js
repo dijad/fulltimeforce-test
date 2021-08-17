@@ -13,7 +13,7 @@ historicCtrl.getCommits = (req, res) => {
         })
         .catch(function (error) {
             // handle error
-            res.status(401).json(error);
+            res.status(400).json(error);
         })
 }
 
