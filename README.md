@@ -1,6 +1,6 @@
 # FULLTIMEFORCE test para desarrollador backend
 
-## Instrucciones
+## Instrucciones Setup
 
 - Clonar el repositorio a través del comando `git clone https://github.com/dijad/fulltimeforce-test.git` en el directorio deseado.
  
